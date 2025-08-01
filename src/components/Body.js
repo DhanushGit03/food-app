@@ -1,11 +1,15 @@
 import RestaurentCard from "./RestaurentCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
-  //State Variable - superpowerful variable
-  // We use Hooks to use the superpowerful Variables (Normal JS Variables given by react to us)
   const [listOfRestaurents, setlistOfRestaurents] = useState(resList);
+  useEffect(() => {
+    console.log("UseEffect called");
+  }, []);
+
+  //First Body is rendered and then the UseEffect will get rendered.
+  console.log("Body rendered");
 
   return (
     <div className="body">
