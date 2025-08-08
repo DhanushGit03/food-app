@@ -1,11 +1,10 @@
-import RestaurentCard from "./RestaurentCard";
-import resList from "../utils/mockData";
+import RestaurentCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 
 const Body = () => {
   const [listOfRestaurents, setlistOfRestaurents] = useState([]);
   const [searchText, setsearchText] = useState("");
-  const [filteredRestaurents, setfilteredRestaurents]=useState([]);
+  const [filteredRestaurents, setfilteredRestaurents] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -38,7 +37,9 @@ const Body = () => {
         <button
           onClick={() => {
             const filteredRestaurents = listOfRestaurents.filter((res) =>
-              res?.card?.card?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+              res?.card?.card?.info?.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase())
             );
             setfilteredRestaurents(filteredRestaurents);
           }}
@@ -61,7 +62,7 @@ const Body = () => {
       <div className="res-container">
         {filteredRestaurents.map((restaurent) => (
           <RestaurentCard
-            key={restaurent.card.card.info.id}
+            key={restaurent.card?.card?.info?.id}
             resData={restaurent}
           />
         ))}
